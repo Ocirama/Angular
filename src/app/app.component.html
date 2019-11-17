@@ -1,0 +1,27 @@
+<h1> Bad app </h1>
+
+<form (submit)="addSpecificCar()" id="car-input-form">
+  <label for="Make input">Car make:</label>
+  <input [(ngModel)]="newCar.carMake" id="Make input" name="Make">
+  <label for="year input">Year:</label>
+  <input [(ngModel)]="newCar.carYear" id="year input" name="year">
+  <label for="Price input">Price:</label>
+  <input [(ngModel)]="newCar.carPrice" type="number" id="Price input" name="Price">
+  <input type="submit" form="car-input-form" id="Submit car ">
+</form>
+<div>Profit: {{profit}}</div>
+
+<div *ngFor="let car of cars" class="carBox"
+     [class.green-background]="car.carPrice > 2000"
+     [ngClass]="{'red-background': car.carPrice<2000}"
+     [ngStyle]="{'background-color':car.carMake}">
+  <div class="form">
+    Marke: {{car.carMake}}<br>
+    Metai: {{car.carYear}}<br>
+    Kaina: {{car.carPrice}}
+    <button (click)="deleteCar()">Sold</button>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
